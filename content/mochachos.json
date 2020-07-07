@@ -1,0 +1,307 @@
+{
+  "status": "active",
+  "type": "restaurant",
+  "categories": [
+    { "priority": 1, "category": "Specials" },
+    { "priority": 2, "category": "Starters" },
+    { "category": "Lunch", "priority": 3 },
+    { "category": "Dinner", "priority": 4 },
+    { "category": "Brunch", "priority": 5 },
+    { "priority": 6, "category": "Main Course" }
+  ],
+  "products": [
+    {
+      "categories": ["Lunch"],
+      "price": "27",
+      "options": [
+        {
+          "toppings": {
+            "max": 3,
+            "selection": "multi",
+            "choices": ["Onion", "Chilli", "Pineaple", "Chicken", "Prawns"]
+          }
+        },
+        {
+          "size": {
+            "choices": ["2L", "500 ML", "1L"],
+            "selection": "single",
+            "max": 1
+          }
+        }
+      ],
+      "description": "Grilled chicken breast, tomato, rocca, guacamole, herb aioli sauce. .",
+      "name": "The Grilled",
+      "_id": 1,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/thegrilled?alt=media"
+    },
+    {
+      "description": "",
+      "name": "BBQ Sauce",
+      "_id": 2,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/bbqsauce?alt=media",
+      "categories": ["Brunch", "Specials", "Dinner"],
+      "price": "2",
+      "options": [
+        {
+          "size": {
+            "choices": ["2L", "500 ML", "1L"],
+            "max": 1,
+            "selection": "single"
+          }
+        }
+      ]
+    },
+    {
+      "description": "2 fried strips, lettuce, jalapeno, cheddar cheese, chipotle sauce (spicy).",
+      "name": "The Wrap (Spicy)",
+      "_id": 3,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/thewrapspicy?alt=media",
+      "categories": ["Starters"],
+      "price": "10",
+      "options": [
+        {
+          "flavor": {
+            "choices": ["Hot", "Mild", "Medium"],
+            "selection": "single",
+            "max": 1
+          }
+        },
+        {
+          "size": {
+            "max": 1,
+            "selection": "single",
+            "choices": ["2L", "500 ML", "1L"]
+          }
+        }
+      ]
+    },
+    {
+      "description": "",
+      "name": "Herb Aioli Sauce",
+      "_id": 4,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/herbaiolisauce?alt=media",
+      "categories": ["Brunch", "Drinks", "Specials"],
+      "price": "02"
+    },
+    {
+      "_id": 5,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/cheddarcheesesauce?alt=media",
+      "categories": ["Main Course"],
+      "price": "2",
+      "description": "",
+      "name": "Cheddar Cheese Sauce"
+    },
+    {
+      "description": "",
+      "name": "Potato Chips Rustica (50 gm)",
+      "_id": 6,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/potatochipsrusticagm?alt=media",
+      "categories": ["Brunch"],
+      "price": "7",
+      "options": [
+        {
+          "flavor": {
+            "selection": "single",
+            "max": 1,
+            "choices": ["Hot", "Mild", "Medium"]
+          }
+        }
+      ]
+    },
+    {
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/chipotlesaucespicy?alt=media",
+      "categories": ["Brunch", "Drinks", "Starters"],
+      "price": "2",
+      "description": "",
+      "name": "Chipotle Sauce (Spicy)",
+      "_id": 7
+    },
+    {
+      "categories": ["Main Course"],
+      "price": "19",
+      "options": [
+        {
+          "flavor": {
+            "selection": "single",
+            "max": 1,
+            "choices": ["Hot", "Mild", "Medium"]
+          }
+        }
+      ],
+      "description": "2 fried strips, bacon, egg, cheese & mayonnaise.",
+      "name": "The Breakfast",
+      "_id": 8,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/thebreakfast?alt=media"
+    },
+    {
+      "price": "2",
+      "description": "",
+      "name": "Smoked Mayo Sauce",
+      "_id": 9,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/smokedmayosauce?alt=media",
+      "categories": ["Starters"]
+    },
+    {
+      "_id": 10,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/mixgreensalad?alt=media",
+      "categories": ["Lunch", "Specials", "Drinks"],
+      "price": "10",
+      "description": "",
+      "name": "Mix Green Salad"
+    },
+    {
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/skinonfries?alt=media",
+      "categories": ["Brunch"],
+      "price": "10",
+      "description": "",
+      "name": "Skin On Fries",
+      "_id": 11
+    },
+    {
+      "categories": ["Lunch", "Starters", "Dinner"],
+      "price": "2",
+      "options": [
+        {
+          "toppings": {
+            "selection": "multi",
+            "max": 3,
+            "choices": ["Onion", "Chilli", "Pineaple", "Chicken", "Prawns"]
+          }
+        }
+      ],
+      "description": "",
+      "name": "Buffalo Sauce (Spicy)",
+      "_id": 12,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/buffalosaucespicy?alt=media"
+    },
+    {
+      "name": "Soft Drinks",
+      "_id": 13,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/softdrinks?alt=media",
+      "categories": ["Specials"],
+      "price": "5",
+      "options": [
+        {
+          "toppings": {
+            "max": 3,
+            "selection": "multi",
+            "choices": ["Onion", "Chilli", "Pineaple", "Chicken", "Prawns"]
+          }
+        }
+      ],
+      "description": ""
+    },
+    {
+      "description": "Served with choice of dip, pickle & nest.",
+      "name": "Strips",
+      "_id": 14,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/strips?alt=media",
+      "categories": ["Lunch"],
+      "price": "50"
+    },
+    {
+      "_id": 15,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/specialsauce?alt=media",
+      "categories": ["Main Course"],
+      "price": "02",
+      "description": "",
+      "name": "Special Sauce"
+    },
+    {
+      "description": "Chicken Fillet, cheddar cheese,potato nest,rocca leaves,bacon strips, herb aioli sauce, siracha sauce.",
+      "name": "Special Sandwich",
+      "_id": 16,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/specialsandwich?alt=media",
+      "categories": ["Starters"],
+      "price": "29"
+    },
+    {
+      "description": "",
+      "name": "Coleslaw",
+      "_id": 17,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/coleslaw?alt=media",
+      "categories": ["Specials"],
+      "price": "10"
+    },
+    {
+      "price": "20",
+      "description": "4 strips served with waffle fries and cola.",
+      "name": "Little Strips",
+      "_id": 18,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/littlestrips?alt=media",
+      "categories": ["Specials"]
+    },
+    {
+      "_id": 19,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/bonein?alt=media",
+      "categories": ["Specials"],
+      "price": "45",
+      "description": "Served with bun, pickle & nest.",
+      "name": "Bone - In"
+    },
+    {
+      "_id": 20,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/water?alt=media",
+      "categories": ["Specials"],
+      "price": "2",
+      "options": [
+        {
+          "flavor": {
+            "choices": ["Hot", "Mild", "Medium"],
+            "selection": "single",
+            "max": 1
+          }
+        },
+        {
+          "toppings": {
+            "max": 3,
+            "selection": "multi",
+            "choices": ["Onion", "Chilli", "Pineaple", "Chicken", "Prawns"]
+          }
+        }
+      ],
+      "description": "",
+      "name": "Water"
+    },
+    {
+      "price": "10",
+      "description": "",
+      "name": "Waffle Fries",
+      "_id": 21,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/wafflefries?alt=media",
+      "categories": ["Specials"]
+    },
+    {
+      "price": "02",
+      "description": "",
+      "name": "Honey Mustard Sauce",
+      "_id": 22,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/honeymustardsauce?alt=media",
+      "categories": ["Lunch"]
+    },
+    {
+      "description": "",
+      "name": "Blue Cheese Sauce",
+      "_id": 23,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/bluecheesesauce?alt=media",
+      "categories": ["Dinner"],
+      "price": "2"
+    },
+    {
+      "price": "20",
+      "description": "Served with waffle fries and cola.",
+      "name": "Little Fried Sandwich",
+      "_id": 24,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/littlefriedsandwich?alt=media",
+      "categories": ["Dinner"]
+    },
+    {
+      "price": "27",
+      "description": "Fillet, cheddar cheese, pickles, lettuce & mayonnaise.",
+      "name": "The Classic",
+      "_id": 25,
+      "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/theclassic?alt=media",
+      "categories": ["Starters"]
+    }
+  ]
+}
