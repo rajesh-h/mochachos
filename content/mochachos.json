@@ -7,7 +7,8 @@
     { "category": "Lunch", "priority": 3 },
     { "category": "Dinner", "priority": 4 },
     { "category": "Brunch", "priority": 5 },
-    { "priority": 6, "category": "Main Course" }
+    { "priority": 6, "category": "Main Course" },
+    { "priority": 0, "category": "All" }
   ],
   "products": [
     {
