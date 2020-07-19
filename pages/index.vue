@@ -1,3 +1,4 @@
+/* eslint-disable no-console */ /* eslint-disable no-console */
 <template>
   <div class="container mx-auto">
     <Hero />
@@ -17,16 +18,27 @@
 
 <script>
 export default {
+  name: 'Home',
+  components: {},
   async fetch() {
-    const currentShop = await this.$content('mochachos').fetch()
-    this.shop = currentShop
-    // eslint-disable-next-line no-console
-    // console.log(this.shop)
+    if (!this.$store.state.authUser) {
+      // When no user send to signin page
+      this.$router.push({ name: 'signin' })
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(this.$store.state.authUser)
+      const currentShop = await this.$content('mochachos').fetch()
+      this.shop = currentShop
+    }
   },
   data() {
     return {
       shop: {},
       selected_category: null,
+      phoneNumber: '',
+      appVerifier: '',
+      otp: '',
+      confirmationResult: undefined,
     }
   },
   computed: {
@@ -54,6 +66,48 @@ export default {
         return a.priority - b.priority
       })
     },
+  },
+  async verifyPhone() {
+    try {
+      this.confirmationResult = await this.$fireAuth.signInWithPhoneNumber(
+        this.phoneNumber,
+        this.appVerifier
+      )
+      // eslint-disable-next-line no-console
+      console.log('response', this.confirmationResult)
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log('error', e)
+    }
+  },
+  async verifyOtp() {
+    try {
+      const result = await this.confirmationResult.confirm(this.otp)
+      // eslint-disable-next-line no-console
+      console.log('result', result)
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log('error', error)
+    }
+  },
+  initReCaptcha() {
+    setTimeout(() => {
+      const appVerifier = new this.$fireAuthObj.RecaptchaVerifier(
+        'recaptcha-container',
+        {
+          size: 'invisible',
+          callback(response) {
+            // eslint-disable-next-line no-console
+            console.log('response', response)
+          },
+          'expired-callback'() {
+            // eslint-disable-next-line no-console
+            console.log('expired-callback')
+          },
+        }
+      )
+      this.appVerifier = appVerifier
+    }, 1000)
   },
 }
 </script>

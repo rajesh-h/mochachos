@@ -13,21 +13,35 @@
   "products": [
     {
       "categories": ["Lunch"],
-      "price": "27",
-      "options": [
-        {
-          "toppings": {
-            "max": 3,
-            "selection": "multi",
-            "choices": ["Onion", "Chilli", "Pineaple", "Chicken", "Prawns"]
-          }
-        },
+      "price": 27,
+      "priceOptions": [
         {
           "size": {
-            "choices": ["2L", "500 ML", "1L"],
-            "selection": "single",
-            "max": 1
+            "choices": [
+              { "option": "small", "price": 27 },
+              { "option": "medium", "price": 37 },
+              { "option": "Large", "price": 47 }
+            ]
           }
+        }
+      ],
+      "hasPriceOptions": true,
+      "hasOtherOptions": true,
+      "canInstruct": true,
+      "otherOptions": [
+        {
+          "name": "toppings",
+          "max": 3,
+          "selection": "multi",
+          "choices": ["Onion", "Chilli", "Pineaple", "Chicken", "Prawns"],
+          "selected": []
+        },
+        {
+          "name": "color",
+          "choices": ["RED", "Gray", "Blue"],
+          "selection": "single",
+          "max": 1,
+          "selected": ""
         }
       ],
       "description": "Grilled chicken breast, tomato, rocca, guacamole, herb aioli sauce. .",
@@ -41,7 +55,9 @@
       "_id": 2,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/bbqsauce?alt=media",
       "categories": ["Brunch", "Specials", "Dinner"],
-      "price": "2",
+      "price": 2,
+      "hasOptions": true,
+      "canInstruct": true,
       "options": [
         {
           "size": {
@@ -58,7 +74,7 @@
       "_id": 3,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/thewrapspicy?alt=media",
       "categories": ["Starters"],
-      "price": "10",
+      "price": 10,
       "options": [
         {
           "flavor": {
@@ -82,13 +98,13 @@
       "_id": 4,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/herbaiolisauce?alt=media",
       "categories": ["Brunch", "Drinks", "Specials"],
-      "price": "02"
+      "price": 2
     },
     {
       "_id": 5,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/cheddarcheesesauce?alt=media",
       "categories": ["Main Course"],
-      "price": "2",
+      "price": 2,
       "description": "",
       "name": "Cheddar Cheese Sauce"
     },
@@ -98,7 +114,7 @@
       "_id": 6,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/potatochipsrusticagm?alt=media",
       "categories": ["Brunch"],
-      "price": "7",
+      "price": 7,
       "options": [
         {
           "flavor": {
@@ -112,14 +128,14 @@
     {
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/chipotlesaucespicy?alt=media",
       "categories": ["Brunch", "Drinks", "Starters"],
-      "price": "2",
+      "price": 2,
       "description": "",
       "name": "Chipotle Sauce (Spicy)",
       "_id": 7
     },
     {
       "categories": ["Main Course"],
-      "price": "19",
+      "price": 19,
       "options": [
         {
           "flavor": {
@@ -135,7 +151,7 @@
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/thebreakfast?alt=media"
     },
     {
-      "price": "2",
+      "price": 2,
       "description": "",
       "name": "Smoked Mayo Sauce",
       "_id": 9,
@@ -146,21 +162,21 @@
       "_id": 10,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/mixgreensalad?alt=media",
       "categories": ["Lunch", "Specials", "Drinks"],
-      "price": "10",
+      "price": 10,
       "description": "",
       "name": "Mix Green Salad"
     },
     {
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/skinonfries?alt=media",
       "categories": ["Brunch"],
-      "price": "10",
+      "price": 10,
       "description": "",
       "name": "Skin On Fries",
       "_id": 11
     },
     {
       "categories": ["Lunch", "Starters", "Dinner"],
-      "price": "2",
+      "price": 2,
       "options": [
         {
           "toppings": {
@@ -180,7 +196,7 @@
       "_id": 13,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/softdrinks?alt=media",
       "categories": ["Specials"],
-      "price": "5",
+      "price": 5,
       "options": [
         {
           "toppings": {
@@ -198,13 +214,25 @@
       "_id": 14,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/strips?alt=media",
       "categories": ["Lunch"],
-      "price": "50"
+      "price": 50
     },
     {
       "_id": 15,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/specialsauce?alt=media",
       "categories": ["Main Course"],
-      "price": "02",
+      "price": 2,
+      "priceOptions": [
+        {
+          "size": {
+            "choices": [
+              { "option": "small", "price": 2 },
+              { "option": "medium", "price": 37 },
+              { "option": "Large", "price": 47 }
+            ]
+          }
+        }
+      ],
+      "hasPriceOptions": true,
       "description": "",
       "name": "Special Sauce"
     },
@@ -214,7 +242,7 @@
       "_id": 16,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/specialsandwich?alt=media",
       "categories": ["Starters"],
-      "price": "29"
+      "price": 29
     },
     {
       "description": "",
@@ -225,7 +253,7 @@
       "price": "10"
     },
     {
-      "price": "20",
+      "price": 20,
       "description": "4 strips served with waffle fries and cola.",
       "name": "Little Strips",
       "_id": 18,
@@ -236,7 +264,7 @@
       "_id": 19,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/bonein?alt=media",
       "categories": ["Specials"],
-      "price": "45",
+      "price": 45,
       "description": "Served with bun, pickle & nest.",
       "name": "Bone - In"
     },
@@ -244,7 +272,7 @@
       "_id": 20,
       "img": "https://storage.googleapis.com/testbeta-2020.appspot.com/mochachos/water?alt=media",
       "categories": ["Specials"],
-      "price": "2",
+      "price": 2,
       "options": [
         {
           "flavor": {
@@ -273,7 +301,7 @@
       "categories": ["Specials"]
     },
     {
-      "price": "02",
+      "price": 2,
       "description": "",
       "name": "Honey Mustard Sauce",
       "_id": 22,
@@ -289,7 +317,7 @@
       "price": "2"
     },
     {
-      "price": "20",
+      "price": 20,
       "description": "Served with waffle fries and cola.",
       "name": "Little Fried Sandwich",
       "_id": 24,
@@ -297,7 +325,7 @@
       "categories": ["Dinner"]
     },
     {
-      "price": "27",
+      "price": 27,
       "description": "Fillet, cheddar cheese, pickles, lettuce & mayonnaise.",
       "name": "The Classic",
       "_id": 25,
