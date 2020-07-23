@@ -58,13 +58,27 @@
       "price": 2,
       "hasOptions": true,
       "canInstruct": true,
-      "options": [
+      "otherOptions": [
         {
-          "size": {
-            "choices": ["2L", "500 ML", "1L"],
-            "max": 1,
-            "selection": "single"
-          }
+          "name": "mychoice",
+          "max": 3,
+          "selection": "multi",
+          "choices": ["Onion", "Chilli", "Pineaple", "Chicken", "Prawns"],
+          "selected": []
+        },
+        {
+          "name": "mycolor",
+          "choices": ["RED", "Gray", "Blue"],
+          "selection": "single",
+          "max": 1,
+          "selected": ""
+        },
+        {
+          "name": "mySize",
+          "choices": ["L", "XL", "XXL"],
+          "selection": "single",
+          "max": 1,
+          "selected": ""
         }
       ]
     },

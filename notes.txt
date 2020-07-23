@@ -1,5 +1,10 @@
-Working on Product popup with option
-Then work on cart functinality
+work on cart functinality - in prgoress
+Work on whether multi option should be there for same product like - biriyani hot, biriyani medium
+
+Done:
+Working on Product popup with option - Done
+
+Future:
 Resend OTP pending, Cannot make it disabled.
 
 

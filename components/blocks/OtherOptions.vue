@@ -13,27 +13,20 @@
           <div v-if="option.selection === 'single'" class="p-2">
             <label v-for="choice in option.choices" :key="choice" class="">
               <input
-                :value="choice"
+                :id="choice"
+                v-model="option.selected"
                 :name="option.name"
+                :value="choice"
                 type="radio"
                 class="form-radio ml-2"
-                @change="updateSelectedOptionSingle()"
+                @change="updateSelectedOptionSingle(option.name, choice)"
               /><span class="ml-2">{{ choice }}</span>
             </label>
           </div>
           <div v-if="option.selection === 'multi'" class="p-2">
             <span>( max {{ option.max }} )</span>
-            <label v-for="choice in option.choices" :key="choice" class="">
-              <input
-                :v-model="option.selected"
-                :value="choice"
-                :name="option.name"
-                type="checkbox"
-                class="form-checkbox ml-2"
-                :disabled="1 !== 1"
-                @change="updateSelectedOptionMulti()"
-              /><span class="ml-2">{{ choice }}</span>
-            </label>
+
+            <MultipleSelect :option="option" v-on="$listeners" />
           </div>
         </div>
       </div>
@@ -69,20 +62,10 @@ export default {
     },
   },
   methods: {
-    updateSelectedOptionSingle() {
-      // eslint-disable-next-line no-console
-      // console.log(choice)
-      // eslint-disable-next-line no-console
-      // console.log(this.$refs)
-      this.$emit('onUpdateSelectedSingle', event)
-    },
-
-    updateSelectedOptionMulti() {
-      // eslint-disable-next-line no-console
-      console.log(this.otherOptions[0])
-      // eslint-disable-next-line no-console
-      // console.log(this.$refs)
-      this.$emit('onUpdateSelectedMulti', event)
+    updateSelectedOptionSingle(name, value) {
+      /* Since this is single choice we deal this slightly different to multiple select
+      We pass in the whole event so we get the name and value through the event which can be used in Product.vue */
+      this.$emit('onUpdateSelectedSingle', { name, selected: value })
     },
   },
 }

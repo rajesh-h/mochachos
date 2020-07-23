@@ -13,14 +13,28 @@
           <span class="ml-4">R {{ product.price }}</span>
           <div class="flex flex-row float-right">
             <svg
+              v-if="checkCart({ _id: product._id })"
               class="h-5 w-5 fill-current text-primary cursor-pointer hover:text-default"
               viewBox="0 0 20 20"
+              @click="
+                addToCart_vx({
+                  _id: product._id,
+                  name: product.name,
+                  img: product.img,
+                  price: product.price,
+                  instructions: product.instructions,
+                  otherOptions: product.otherOptions,
+                  qty: -1,
+                })
+              "
             >
               <path
                 d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm5-9v2H5V9h10z"
               />
             </svg>
-            <div class="mx-1 px-2">4</div>
+            <div v-if="checkCart({ _id: product._id })" class="mx-1 px-2">
+              {{ getQty({ _id: product._id }) }}
+            </div>
             <svg
               class="h-5 w-5 fill-current text-primary cursor-pointer hover:text-default"
               viewBox="0 0 20 20"
@@ -57,15 +71,38 @@
                 <td class="px-2 py-2 text-sm md:text-md">
                   <div class="flex flex-row justify-around items-center">
                     <button
+                      v-if="checkCart({ _id: product._id })"
                       class="text-md md:text-2xl text-red-600 p-2 font-bold focus:outline-none"
+                      @click="
+                        addToCart_vx({
+                          _id: product._id,
+                          name: product.name,
+                          img: product.img,
+                          price: product.price,
+
+                          qty: -1,
+                        })
+                      "
                     >
                       -
                     </button>
-                    <div class="self-center font-semibold">
-                      0
+                    <div
+                      v-if="checkCart({ _id: product._id })"
+                      class="self-center font-semibold"
+                    >
+                      {{ getQty({ _id: product._id }) }}
                     </div>
                     <button
                       class="text-md md:text-2xl text-primary p-2 font-bold focus:outline-none"
+                      @click="
+                        addToCart_vx({
+                          _id: product._id,
+                          name: product.name,
+                          img: product.img,
+                          price: product.price,
+                          qty: 1,
+                        })
+                      "
                     >
                       +
                     </button>
@@ -88,16 +125,24 @@
           </table>
           <OtherOptions
             :other-options="product.otherOptions"
-            @onUpdateSelectedSingle="updateSelectedSingle"
-            @onUpdateSelectedMulti="updateSelectedMulti"
+            @onUpdateSelectedSingle="updateSelected"
+            @onUpdateSelectedMulti="updateSelected"
           />
           <textarea
             id=""
+            v-model="product.instructions"
             class="p-2 m-2 bg-primary rounded-md border border-purple-500"
             name=""
             cols="30"
             rows="2"
             placeholder="Special Instructions"
+            @change="
+              addAdditinalInfo({
+                _id: product._id,
+                instructions: product.instructions,
+                otherOptions: product.otherOptions,
+              })
+            "
           ></textarea>
         </div>
         <button @click="printProduct()">Add</button>
@@ -107,6 +152,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Product',
   props: {
@@ -148,13 +194,31 @@ export default {
   data() {
     return {
       showModal: false,
+      instructions: '',
       modalOptions: {
         // modal: 'max-h-90',
       },
       orderPerProduct: [],
     }
   },
+  computed: {
+    ...mapState({
+      shipping: (state) => state.shipping || {},
+      totalAmount: (state) => state.cart.totalAmount || 0,
+      cartItems: (state) => state.cart.items || [],
+    }),
+    ...mapGetters({
+      checkCart: 'cart/checkCart',
+      checkviewdetails: 'viewdetails/checkviewdetails',
+      getQty: 'cart/getQty',
+    }),
+  },
   methods: {
+    ...mapActions({
+      addToCart_vx: 'cart/addToCart',
+      addAdditinalInfo: 'cart/addAdditionalDetails',
+    }),
+
     addToCart() {
       if (
         this.product.hasOptions ||
@@ -162,11 +226,18 @@ export default {
         this.product.hasPriceOptions
       ) {
         // eslint-disable-next-line no-console
-        console.log('Option to be selected')
+        // console.log('Option to be selected')
         this.showModal = true
       } else {
         // eslint-disable-next-line no-console
-        console.log('No Option can be selected, so adding directly')
+        // console.log('No Option can be selected, so adding directly')
+        this.addToCart_vx({
+          _id: this.product._id,
+          name: this.product.name,
+          img: this.product.img,
+          price: this.product.price,
+          qty: 1,
+        })
       }
     },
     printProduct(prod) {
@@ -174,31 +245,22 @@ export default {
       console.log(this.product)
     },
 
-    updateSelectedSingle(event) {
+    updateSelected(emitedValue) {
       // eslint-disable-next-line no-console
-      console.log(event)
+      console.log('Working with emitted values')
+      /* Here emited value will have name and selected choice(s) */
       this.product.otherOptions.forEach((elem) => {
-        // eslint-disable-next-line no-console
-        if (elem.name === event.target.name) {
-          // eslint-disable-next-line no-console
-          elem.selected = event.target.value
+        if (elem.name === emitedValue.name) {
+          elem.selected = emitedValue.selected
         }
       })
       // eslint-disable-next-line no-console
-      console.log(this.product)
-    },
-    updateSelectedMulti(event) {
-      // eslint-disable-next-line no-console
-      console.log(event)
-      this.product.otherOptions.forEach((elem) => {
-        // eslint-disable-next-line no-console
-        if (elem.name === event.target.name) {
-          // eslint-disable-next-line no-console
-          elem.selected = event.target.value
-        }
+      // console.log(this.product)
+      this.addAdditinalInfo({
+        _id: this.product._id,
+        instructions: this.product.instructions,
+        otherOptions: this.product.otherOptions,
       })
-      // eslint-disable-next-line no-console
-      console.log(this.product)
     },
   },
 }

@@ -26,7 +26,7 @@ export default {
       this.$router.push({ name: 'signin' })
     } else {
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.authUser)
+      // console.log(this.$store.state.authUser)
       const currentShop = await this.$content('mochachos').fetch()
       this.shop = currentShop
     }
