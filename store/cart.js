@@ -198,11 +198,11 @@ const mutations = {
     const record = state.items.find((p) => p._id === _id)
     if (record) {
       // eslint-disable-next-line no-console
-      console.log(otherOptions)
+      // console.log(otherOptions)
       // Object.assign(record, instructions)
       // Object.assign(record, otherOptions)
-      record.instructions = instructions
-      record.otherOptions = otherOptions
+      // record.instructions = instructions
+      // record.otherOptions = otherOptions
       // eslint-disable-next-line no-console
       console.log(record)
       // eslint-disable-next-line no-console

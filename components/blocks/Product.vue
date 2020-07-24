@@ -22,8 +22,6 @@
                   name: product.name,
                   img: product.img,
                   price: product.price,
-                  instructions: product.instructions,
-                  otherOptions: product.otherOptions,
                   qty: -1,
                 })
               "
@@ -255,12 +253,14 @@ export default {
         }
       })
       // eslint-disable-next-line no-console
+      console.log('Updating additional information is still pending')
+      // eslint-disable-next-line no-console
       // console.log(this.product)
-      this.addAdditinalInfo({
-        _id: this.product._id,
-        instructions: this.product.instructions,
-        otherOptions: this.product.otherOptions,
-      })
+      // this.addAdditinalInfo({
+      //   _id: this.product._id,
+      //   instructions: this.product.instructions,
+      //   otherOptions: this.product.otherOptions,
+      // })
     },
   },
 }
