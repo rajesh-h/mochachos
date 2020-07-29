@@ -164,9 +164,9 @@ const mutations = {
     state.discount = amount
   },
   // adds or remove an item from cart
-  addToCart(state, { _id, name, img, price, qty }) {
+  addToCart(state, { productCopy, qty }) {
     if (state.items.length === 0) state.showCart = true // User training
-    const record = state.items.find((p) => p._id === _id)
+    const record = state.items.find((p) => p._id === productCopy._id)
     if (record) {
       // If the product is already there in cart.
       record.qty += qty
@@ -174,11 +174,11 @@ const mutations = {
         state.items = state.items.filter((r) => {
           // eslint-disable-next-line no-console
           console.log('Check for particular variant deletion')
-          return r._id !== _id
+          return r._id !== productCopy.$fireStore_id
         })
       }
     } else {
-      const item = { _id, name, price, img, qty }
+      const item = { qty, ...productCopy }
       state.items.push(item)
     }
     if (state.items.length === 0) state.showCart = false // When all items are removed from cart

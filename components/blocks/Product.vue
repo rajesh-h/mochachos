@@ -18,10 +18,7 @@
               viewBox="0 0 20 20"
               @click="
                 addToCart_vx({
-                  _id: product._id,
-                  name: product.name,
-                  img: product.img,
-                  price: product.price,
+                  productCopy: productCopy,
                   qty: -1,
                 })
               "
@@ -73,10 +70,7 @@
                       class="text-md md:text-2xl text-red-600 p-2 font-bold focus:outline-none"
                       @click="
                         addToCart_vx({
-                          _id: product._id,
-                          name: product.name,
-                          img: product.img,
-                          price: product.price,
+                          productCopy: productCopy,
 
                           qty: -1,
                         })
@@ -94,10 +88,7 @@
                       class="text-md md:text-2xl text-primary p-2 font-bold focus:outline-none"
                       @click="
                         addToCart_vx({
-                          _id: product._id,
-                          name: product.name,
-                          img: product.img,
-                          price: product.price,
+                          productCopy: productCopy,
                           qty: 1,
                         })
                       "
@@ -197,6 +188,7 @@ export default {
         // modal: 'max-h-90',
       },
       orderPerProduct: [],
+      // productCopy: JSON.parse(JSON.stringify(this.product)),
     }
   },
   computed: {
@@ -204,6 +196,10 @@ export default {
       shipping: (state) => state.shipping || {},
       totalAmount: (state) => state.cart.totalAmount || 0,
       cartItems: (state) => state.cart.items || [],
+      productCopy() {
+        // `this` points to the vm instance
+        return JSON.parse(JSON.stringify(this.product))
+      },
     }),
     ...mapGetters({
       checkCart: 'cart/checkCart',
@@ -230,17 +226,18 @@ export default {
         // eslint-disable-next-line no-console
         // console.log('No Option can be selected, so adding directly')
         this.addToCart_vx({
-          _id: this.product._id,
-          name: this.product.name,
-          img: this.product.img,
-          price: this.product.price,
+          productCopy: this.productCopy,
           qty: 1,
         })
+        // eslint-disable-next-line no-console
+        console.log(this.productCopy)
       }
     },
     printProduct(prod) {
       // eslint-disable-next-line no-console
-      console.log(this.product)
+      // console.log(this.product)
+      // eslint-disable-next-line no-console
+      console.log(this.productCopy)
     },
 
     updateSelected(emitedValue) {
