@@ -174,7 +174,7 @@ const mutations = {
         state.items = state.items.filter((r) => {
           // eslint-disable-next-line no-console
           console.log('Check for particular variant deletion')
-          return r._id !== productCopy.$fireStore_id
+          return r._id !== productCopy._id
         })
       }
     } else {
