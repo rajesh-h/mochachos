@@ -164,9 +164,9 @@ const mutations = {
     state.discount = amount
   },
   // adds or remove an item from cart
-  addToCart(state, { productCopy, qty }) {
+  addToCart(state, { _id, name, price, qty }) {
     if (state.items.length === 0) state.showCart = true // User training
-    const record = state.items.find((p) => p._id === productCopy._id)
+    const record = state.items.find((p) => p._id === _id)
     if (record) {
       // If the product is already there in cart.
       record.qty += qty
@@ -174,11 +174,11 @@ const mutations = {
         state.items = state.items.filter((r) => {
           // eslint-disable-next-line no-console
           console.log('Check for particular variant deletion')
-          return r._id !== productCopy._id
+          return r._id !== _id
         })
       }
     } else {
-      const item = { qty, ...productCopy }
+      const item = { _id, name, price, qty }
       state.items.push(item)
     }
     if (state.items.length === 0) state.showCart = false // When all items are removed from cart
@@ -195,8 +195,16 @@ const mutations = {
   addAdditionalDetails(state, { _id, instructions, otherOptions }) {
     // eslint-disable-next-line no-console
     console.log('Adding Additional Details ')
-    const record = state.items.find((p) => p._id === _id)
-    if (record) {
+    const record = state.items.findIndex((p) => p._id === _id)
+    // eslint-disable-next-line no-console
+    console.log(record)
+    if (record !== -1) {
+      delete (state.items[record], 'instructions') // Delete before updating the new values
+      delete (state.items[record], 'otherOptions')
+      Object.assign(state.items[record], {
+        instructions,
+        otherOptions,
+      })
       // eslint-disable-next-line no-console
       // console.log(otherOptions)
       // Object.assign(record, instructions)

@@ -18,7 +18,9 @@
               viewBox="0 0 20 20"
               @click="
                 addToCart_vx({
-                  productCopy: productCopy,
+                  _id: product._id,
+                  name: product.name,
+                  price: product.price,
                   qty: -1,
                 })
               "
@@ -70,8 +72,9 @@
                       class="text-md md:text-2xl text-red-600 p-2 font-bold focus:outline-none"
                       @click="
                         addToCart_vx({
-                          productCopy: productCopy,
-
+                          _id: product._id,
+                          name: product.name,
+                          price: product.price,
                           qty: -1,
                         })
                       "
@@ -88,7 +91,9 @@
                       class="text-md md:text-2xl text-primary p-2 font-bold focus:outline-none"
                       @click="
                         addToCart_vx({
-                          productCopy: productCopy,
+                          _id: product._id,
+                          name: product.name,
+                          price: product.price,
                           qty: 1,
                         })
                       "
@@ -226,7 +231,9 @@ export default {
         // eslint-disable-next-line no-console
         // console.log('No Option can be selected, so adding directly')
         this.addToCart_vx({
-          productCopy: this.productCopy,
+          _id: this.product._id,
+          name: this.product.name,
+          price: this.product.price,
           qty: 1,
         })
         // eslint-disable-next-line no-console
@@ -253,11 +260,11 @@ export default {
       console.log('Updating additional information is still pending')
       // eslint-disable-next-line no-console
       // console.log(this.product)
-      // this.addAdditinalInfo({
-      //   _id: this.product._id,
-      //   instructions: this.product.instructions,
-      //   otherOptions: this.product.otherOptions,
-      // })
+      this.addAdditinalInfo({
+        _id: this.product._id,
+        instructions: this.product.instructions,
+        otherOptions: this.product.otherOptions,
+      })
     },
   },
 }
