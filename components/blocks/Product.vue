@@ -262,8 +262,8 @@ export default {
       // console.log(this.product)
       this.addAdditinalInfo({
         _id: this.product._id,
-        instructions: this.product.instructions,
-        otherOptions: this.product.otherOptions,
+        instructions: JSON.parse(JSON.stringify(this.product.instructions)),
+        otherOptions: JSON.parse(JSON.stringify(this.product.otherOptions)),
       })
     },
   },

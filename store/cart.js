@@ -80,8 +80,11 @@ const actions = {
   addToCart({ commit }, payload) {
     commit('addToCart', payload)
   },
-  addAdditionalDetails({ commit }, payload) {
-    commit('addAdditionalDetails', payload)
+  addAdditionalDetails({ commit, getters }, payload) {
+    commit('addAdditionalDetails', {
+      payload,
+      itemsCopy: getters.getItems,
+    })
   },
   applyDiscount({ commit }, payload) {
     commit('applyDiscount', payload)
@@ -192,16 +195,21 @@ const mutations = {
     }
   },
   // Add special instructions and other Options
-  addAdditionalDetails(state, { _id, instructions, otherOptions }) {
+  addAdditionalDetails(state, { payload, itemsCopy }) {
     // eslint-disable-next-line no-console
     console.log('Adding Additional Details ')
-    const record = state.items.findIndex((p) => p._id === _id)
+    // const itemsCopy = getters.getItems
     // eslint-disable-next-line no-console
-    console.log(record)
+    console.log(payload._id)
+    const record = itemsCopy.findIndex((p) => p._id === payload._id)
+    const instructions = payload.instructions
+    const otherOptions = payload.otherOptions
+    // eslint-disable-next-line no-console
+    // console.log(record)
     if (record !== -1) {
-      delete (state.items[record], 'instructions') // Delete before updating the new values
-      delete (state.items[record], 'otherOptions')
-      Object.assign(state.items[record], {
+      delete (itemsCopy[record], 'instructions') // Delete before updating the new values
+      delete (itemsCopy[record], 'otherOptions')
+      Object.assign(itemsCopy[record], {
         instructions,
         otherOptions,
       })
@@ -212,9 +220,12 @@ const mutations = {
       // record.instructions = instructions
       // record.otherOptions = otherOptions
       // eslint-disable-next-line no-console
-      console.log(record)
+      // console.log(record)
       // eslint-disable-next-line no-console
-      console.log(_id, instructions, otherOptions)
+      console.log(itemsCopy)
+      // eslint-disable-next-line no-console
+      // console.log(_id, instructions, otherOptions)
+      // state.items = itemsCopy
     } else {
       // eslint-disable-next-line no-console
       console.log('No Chanegs to Items as product not in cart')
