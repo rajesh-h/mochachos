@@ -1,6 +1,9 @@
+const items = window.localStorage.getItem('mycart')
+const skuArray = window.localStorage.getItem('skuArray')
+
 const state = () => ({
-  items: [],
-  skuArray: [],
+  items: items ? JSON.parse(items) : [],
+  skuArray: skuArray ? JSON.parse(skuArray) : [],
   currency: 'R',
   discount: 0,
   freeShipping: false,
@@ -186,7 +189,9 @@ const mutations = {
     }
     if (state.items.length === 0) state.showCart = false // When all items are removed from cart
     // this.$cookies.set('ArialShop_items', state.items)
+    window.localStorage.setItem('mycart', JSON.stringify(state.items))
     state.skuArray = state.items.map((a) => a._id)
+    window.localStorage.setItem('skuArray', JSON.stringify(state.skuArray))
     if (qty > 0) {
       const msg = 'Item  to cart'
       // eslint-disable-next-line no-console
@@ -226,6 +231,7 @@ const mutations = {
       // eslint-disable-next-line no-console
       // console.log(_id, instructions, otherOptions)
       // state.items = itemsCopy
+      window.localStorage.setItem('mycart', JSON.stringify(state.items))
     } else {
       // eslint-disable-next-line no-console
       console.log('No Chanegs to Items as product not in cart')

@@ -15,6 +15,16 @@
           d="M10 2v16a8 8 0 1 0 0-16zm0 18a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"
         />
       </svg>
+      <svg
+        v-if="isLoggedIn"
+        class="h-5 w-5 fill-current cursor-pointer mx-2"
+        viewBox="0 0 20 20"
+        @click="goToCart()"
+      >
+        <path
+          d="M4 2h16l-3 9H4a1 1 0 1 0 0 2h13v2H4a3 3 0 0 1 0-6h.33L3 5 2 2H0V0h3a1 1 0 0 1 1 1v1zm1 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm10 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+        />
+      </svg>
 
       <svg
         v-if="isLoggedIn"
@@ -99,6 +109,9 @@ export default {
         this.showUserMenu = false
         this.$router.push({ name: 'signin' })
       })
+    },
+    goToCart() {
+      this.$router.push({ name: 'cart' })
     },
   },
 }

@@ -130,13 +130,7 @@
             cols="30"
             rows="2"
             placeholder="Special Instructions"
-            @change="
-              addAdditinalInfo({
-                _id: product._id,
-                instructions: product.instructions,
-                otherOptions: product.otherOptions,
-              })
-            "
+            @change="addAdditinalInfoInstructions()"
           ></textarea>
         </div>
         <button @click="printProduct()">Add</button>
@@ -252,14 +246,25 @@ export default {
       console.log('Working with emitted values')
       /* Here emited value will have name and selected choice(s) */
       this.product.otherOptions.forEach((elem) => {
+        // eslint-disable-next-line no-console
+        console.log('Inside update elem')
         if (elem.name === emitedValue.name) {
           elem.selected = emitedValue.selected
         }
+        // eslint-disable-next-line no-console
+        console.log('After update elem')
       })
       // eslint-disable-next-line no-console
       console.log('Updating additional information is still pending')
       // eslint-disable-next-line no-console
       // console.log(this.product)
+      this.addAdditinalInfo({
+        _id: this.product._id,
+        instructions: JSON.parse(JSON.stringify(this.product.instructions)),
+        otherOptions: JSON.parse(JSON.stringify(this.product.otherOptions)),
+      })
+    },
+    addAdditinalInfoInstructions() {
       this.addAdditinalInfo({
         _id: this.product._id,
         instructions: JSON.parse(JSON.stringify(this.product.instructions)),
